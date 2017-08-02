@@ -5,6 +5,29 @@
 \ProvidesPackage{lib/dsabackgroundimg}[2017/08/02]
 \usepackage[pages=all]{background} %background images with different backgrounds for even and odd pages
 
+\usepackage{zref-abspage,zref-lastpage}
+\makeatletter
+\@ifpackagelater{zref-abspage}{2013/02/09}{%
+  \newcommand*{\iffancylastpage}{%
+    \ifnum\zref@extractdefault{LastPage}{abspage}{-1}=\value{zabspage}%
+      \expandafter\@firstoftwo
+    \else
+      \expandafter\@secondoftwo
+    \fi
+  }%
+}{%
+  \newcommand*{\iffancylastpage}{%
+    \ifnum\zref@extractdefault{LastPage}{abspage}{-1}%
+        =\numexpr\value{abspage}+1\relax
+      \expandafter\@firstoftwo
+    \else
+      \expandafter\@secondoftwo
+    \fi
+  }%
+}
+\makeatother
+
+
 \newtoggle{bool-a4}
 \newtoggle{bool-print}
 
@@ -41,10 +64,14 @@
 	angle=0,
 	color=black,
 	contents={%
-		\ifodd\value{page}
-			\includegraphics[width=\papwerwidth]{\oddbackgroundimg{\intcalcMod{\value{page}}{3}}}
-			\else
-			\includegraphics[width=\papwerwidth]{\evenbackgroundimg{\intcalcMod{\value{page}}{3}}}
+		\ifnum{LastPage}{page}
+
+		\else
+			\ifodd\value{page}
+				\includegraphics[width=\paperwidth]{\oddbackgroundimg{\intcalcMod{\value{page}}{3}}}
+				\else
+				\includegraphics[width=\paperwidth]{\evenbackgroundimg{\intcalcMod{\value{page}}{3}}}
+			\fi
 		\fi
 		}
 	}
