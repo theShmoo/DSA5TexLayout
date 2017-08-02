@@ -4,29 +4,9 @@
 % Copyright (C) 2017 by David Pfahler
 \ProvidesPackage{lib/dsabackgroundimg}[2017/08/02]
 \usepackage[pages=all]{background} %background images with different backgrounds for even and odd pages
+\usepackage{zref-lastpage}
 
-\usepackage{zref-abspage,zref-lastpage}
-\makeatletter
-\@ifpackagelater{zref-abspage}{2013/02/09}{%
-  \newcommand*{\iffancylastpage}{%
-    \ifnum\zref@extractdefault{LastPage}{abspage}{-1}=\value{zabspage}%
-      \expandafter\@firstoftwo
-    \else
-      \expandafter\@secondoftwo
-    \fi
-  }%
-}{%
-  \newcommand*{\iffancylastpage}{%
-    \ifnum\zref@extractdefault{LastPage}{abspage}{-1}%
-        =\numexpr\value{abspage}+1\relax
-      \expandafter\@firstoftwo
-    \else
-      \expandafter\@secondoftwo
-    \fi
-  }%
-}
-\makeatother
-
+\newcommand{\LastPageNumber}{\zref@extractdefault{LastPage}{page}{0}}
 
 \newtoggle{bool-a4}
 \newtoggle{bool-print}
@@ -64,15 +44,22 @@
 	angle=0,
 	color=black,
 	contents={%
-		\ifnum{LastPage}{page}
-
-		\else
-			\ifodd\value{page}
-				\includegraphics[width=\paperwidth]{\oddbackgroundimg{\intcalcMod{\value{page}}{3}}}
-				\else
-				\includegraphics[width=\paperwidth]{\evenbackgroundimg{\intcalcMod{\value{page}}{3}}}
-			\fi
-		\fi
+    \ifnum\value{page}=1
+    %TITLEPAGE
+      \includegraphics[width=\paperwidth]{img/bg-a4-odd-print.jpg}
+    \else
+  		\ifnum\value{page}<\LastPageNumber
+        %NORMALPAGE
+  			\ifodd\value{page}
+  				\includegraphics[width=\paperwidth]{\oddbackgroundimg{\intcalcMod{\value{page}}{3}}}
+  				\else
+  				\includegraphics[width=\paperwidth]{\evenbackgroundimg{\intcalcMod{\value{page}}{3}}}
+  			\fi
+      \else
+       %LASTPAGE
+        \includegraphics[width=\paperwidth]{img/bg-a4-even-print.jpg}
+  		\fi
+    \fi
 		}
 	}
 
