@@ -1,4 +1,8 @@
-\ProvidesPackage{lib/dsabackgroundimg}[2016/03/13]
+%!TEX root = example.tex
+%!TEX spellcheck = de
+% dsabackgroundimg.sty
+% Copyright (C) 2017 by David Pfahler
+\ProvidesPackage{lib/dsabackgroundimg}[2017/08/02]
 \usepackage[pages=all]{background} %background images with different backgrounds for even and odd pages
 
 \newtoggle{bool-a4}
@@ -14,19 +18,19 @@
 
 \iftoggle{bool-a4}{%
 	\iftoggle{bool-print}{%
-		\newcommand{\oddbackgroundimg}{img/bg-a4-odd-print.jpg}
-		\newcommand{\evenbackgroundimg}{img/bg-a4-even-print.jpg}
+		\newcommand{\oddbackgroundimg}[1]{img/bg-a4-odd-print-#1.jpg}
+		\newcommand{\evenbackgroundimg}[1]{img/bg-a4-even-print-#1.jpg}
 		}{
-		\newcommand{\oddbackgroundimg}{img/bg-a4-odd.jpg}
-		\newcommand{\evenbackgroundimg}{img/bg-a4-even.jpg}
+		\newcommand{\oddbackgroundimg}[1]{img/bg-a4-odd-#1.jpg}
+		\newcommand{\evenbackgroundimg}[1]{img/bg-a4-even-#1.jpg}
 		}
 	}{%
 	\iftoggle{bool-print}{%
-		\newcommand{\oddbackgroundimg}{img/bg-letter-odd-print.jpg}
-		\newcommand{\evenbackgroundimg}{img/bg-letter-even-print.jpg}
+		\newcommand{\oddbackgroundimg}[1]{img/bg-letter-odd-print-#1.jpg}
+		\newcommand{\evenbackgroundimg}[1]{img/bg-letter-even-print-#1.jpg}
 		}{%
-		\newcommand{\oddbackgroundimg}{img/bg-letter-odd.jpg}
-		\newcommand{\evenbackgroundimg}{img/bg-letter-even.jpg}
+		\newcommand{\oddbackgroundimg}[1]{img/bg-letter-odd-#1.jpg}
+		\newcommand{\evenbackgroundimg}[1]{img/bg-letter-even-#1.jpg}
 		}
 	}
 
@@ -38,9 +42,9 @@
 	color=black,
 	contents={%
 		\ifodd\value{page}
-			\includegraphics[width=\paperwidth]{\oddbackgroundimg}
+			\includegraphics[width=\papwerwidth]{\oddbackgroundimg{\intcalcMod{\value{page}}{3}}}
 			\else
-			\includegraphics[width=\paperwidth]{\evenbackgroundimg}
+			\includegraphics[width=\papwerwidth]{\evenbackgroundimg{\intcalcMod{\value{page}}{3}}}
 		\fi
 		}
 	}

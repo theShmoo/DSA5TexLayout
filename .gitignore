@@ -21,3 +21,14 @@
 *.mtc1
 *.out
 *.synctex.gz
+
+# manually added compile files latex
+*.fls
+*.fdb_latexmk
+*.pdf
+
+# sublime files:
+DSA5TexLayout.sublime-workspace
+DSA5TexLayout.sublime-project
+
+
