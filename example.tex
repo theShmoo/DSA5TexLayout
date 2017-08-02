@@ -2,16 +2,41 @@
 % rather than alternate every other.
 %
 % Note that the article class does not have chapters.
-\documentclass[10pt,a4paper,twoside,twocolumn,openany]{book}
+\documentclass[10pt,% font size
+	a4paper,% paper size
+	twoside,% different margin for even and odd page
+	twocolumn,% two columns per page
+	openany% chapters start on the same page
+	]{book}
+
 \usepackage[bg-a4]{dsa} % Options: bg-a4, bg-letter, bg-full, bg-print, bg-none.
-\usepackage[english]{babel}
+\usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
+
+
+\title{The Dark \LaTeX}
+\author{David}
+\date{\thedate}
 
 % Start document
 \begin{document}
-\fontfamily{ppl}\selectfont % Set text font
+
+% Select the language
+\selectlanguage{ngerman}
+
+% Set text font
+\fontfamily{ppl}\selectfont
 
 % Your content goes here
+
+\frontmatter
+
+\lipsum[1] % filler text
+
+%Inhaltsverzeichnis
+\tableofcontents
+
+\mainmatter
 
 % Comment this out if you're using the article class.
 \chapter{Chapter 1: The Dark \LaTeX}
@@ -106,6 +131,14 @@
 \lipsum[1] % text
 
 \pagebreak
+
+\lipsum[1] % text
+
+\pagebreak
+
+\lipsum[1] % text
+
+\backmatter
 
 \lipsum[1] % text
 

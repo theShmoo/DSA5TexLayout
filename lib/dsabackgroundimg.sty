@@ -1,10 +1,11 @@
-%!TEX root = example.tex
+%!TEX root = ../example.tex
 %!TEX spellcheck = de
 % dsabackgroundimg.sty
 % Copyright (C) 2017 by David Pfahler
 \ProvidesPackage{lib/dsabackgroundimg}[2017/08/02]
-\usepackage[pages=all]{background} %background images with different backgrounds for even and odd pages
-\usepackage{zref-lastpage}
+\RequirePackage{zref-lastpage}
+\RequirePackage[pages=all]{background}       %background images with different backgrounds for even and odd pages
+\RequirePackage{intcalc}                     % used for modulo calculations
 
 \newcommand{\LastPageNumber}{\zref@extractdefault{LastPage}{page}{0}}
 
@@ -20,47 +21,49 @@
 \ProcessOptions\relax
 
 \iftoggle{bool-a4}{%
-	\iftoggle{bool-print}{%
-		\newcommand{\oddbackgroundimg}[1]{img/bg-a4-odd-print-#1.jpg}
-		\newcommand{\evenbackgroundimg}[1]{img/bg-a4-even-print-#1.jpg}
-		}{
-		\newcommand{\oddbackgroundimg}[1]{img/bg-a4-odd-#1.jpg}
-		\newcommand{\evenbackgroundimg}[1]{img/bg-a4-even-#1.jpg}
-		}
-	}{%
-	\iftoggle{bool-print}{%
-		\newcommand{\oddbackgroundimg}[1]{img/bg-letter-odd-print-#1.jpg}
-		\newcommand{\evenbackgroundimg}[1]{img/bg-letter-even-print-#1.jpg}
-		}{%
-		\newcommand{\oddbackgroundimg}[1]{img/bg-letter-odd-#1.jpg}
-		\newcommand{\evenbackgroundimg}[1]{img/bg-letter-even-#1.jpg}
-		}
-	}
+  \iftoggle{bool-print}{%
+    \newcommand{\oddbackgroundimg}[1]{img/bg-a4-odd-print-#1.jpg}
+    \newcommand{\evenbackgroundimg}[1]{img/bg-a4-even-print-#1.jpg}
+    }{
+    \newcommand{\oddbackgroundimg}[1]{img/bg-a4-odd-#1.jpg}
+    \newcommand{\evenbackgroundimg}[1]{img/bg-a4-even-#1.jpg}
+    }
+  }{%
+  \iftoggle{bool-print}{%
+    \newcommand{\oddbackgroundimg}[1]{img/bg-letter-odd-print-#1.jpg}
+    \newcommand{\evenbackgroundimg}[1]{img/bg-letter-even-print-#1.jpg}
+    }{%
+    \newcommand{\oddbackgroundimg}[1]{img/bg-letter-odd-#1.jpg}
+    \newcommand{\evenbackgroundimg}[1]{img/bg-letter-even-#1.jpg}
+    }
+  }
 
 
 \backgroundsetup{
-	scale=1,
-	opacity=1.0,
-	angle=0,
-	color=black,
-	contents={%
-    \ifnum\value{page}=1
+  scale=1,
+  opacity=1.0,
+  angle=0,
+  color=black,
+  contents={%
+    \makeatletter
+    \if@frontmatter
     %TITLEPAGE
       \includegraphics[width=\paperwidth]{img/bg-a4-odd-print.jpg}
     \else
-  		\ifnum\value{page}<\LastPageNumber
+      \if@mainmatter
         %NORMALPAGE
-  			\ifodd\value{page}
-  				\includegraphics[width=\paperwidth]{\oddbackgroundimg{\intcalcMod{\value{page}}{3}}}
-  				\else
-  				\includegraphics[width=\paperwidth]{\evenbackgroundimg{\intcalcMod{\value{page}}{3}}}
-  			\fi
+        \ifodd\value{page}
+          \includegraphics[width=\paperwidth]{\oddbackgroundimg{\intcalcMod{\value{page}}{3}}}
+          \else
+          \includegraphics[width=\paperwidth]{\evenbackgroundimg{\intcalcMod{\value{page}}{3}}}
+        \fi
       \else
        %LASTPAGE
         \includegraphics[width=\paperwidth]{img/bg-a4-even-print.jpg}
-  		\fi
+      \fi
     \fi
-		}
-	}
+    \makeatother
+  }
+}
 
 

@@ -17,11 +17,11 @@
 \RequirePackage[table]{xcolor}
 \RequirePackage{array}
 \RequirePackage{tabularx}
-\RequirePackage{intcalc}          % used for modulo calculations
 \RequirePackage{tikz}
 \RequirePackage{keycommand}
 \RequirePackage{fancyhdr} 			  % Adaptation of the footers
 \RequirePackage[most]{tcolorbox}  % used for some boxes
+\RequirePackage{hyperref} % Enables cross linking in the electronic document version. This package has to be included second to last.
 
 % Load other modules of this package
 \usepackage{lib/dsamonster}
@@ -79,7 +79,7 @@
 \setlength{\columnsep}{1cm}
 
 % Define colors, sampled from the books.
-\usepackage{color}
+\usepackage{xcolor}
 \definecolor{bgtan}{HTML}{F7F2E5}		% e.g. used for background and quotebox
 \definecolor{titlered}{HTML}{58180D}	% e.g. used for titles
 \definecolor{undergold}{HTML}{C9AD6A}	% e.g. used for titlerules
