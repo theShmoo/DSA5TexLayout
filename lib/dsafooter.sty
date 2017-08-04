@@ -3,12 +3,31 @@
 % dsafooter.sty
 % Copyright (C) 2017 by David Pfahler
 
+% create a style for using shadows in text
+
+\usepackage[outline]{contour}% http://ctan.org/pkg/contour
+
+\newcommand\dsashadowtext[3]{%
+\begin{tikzpicture}
+    \draw[every node/.style={text=#1}]
+     (0em,-0em)         coordinate (text destination)
+  ++ (0em,-0em)         coordinate (shadow destination)
+     % Blur
+     \foreach \x [count=\i] in {0.2,0.4,...,2} {
+        node[#2, opacity=.05] {\contournumber{10}\contourlength{\x pt}\contour{black}{#3}}
+      }
+    % Main Shadow
+    %(shadow destination) node[#2] {#3}
+    (text destination)   node[#1] {#3};
+\end{tikzpicture}
+}
+
 % Setup for custom footer
 \pagestyle{fancy}
 
 \footskip = 48pt %push the footer down so it fits with the decal from the bg-img
-\fancyhfoffset[LE]{10pt} % push the footer left on even pages so it fits the decal
-\fancyhfoffset[RO]{10pt} % push the footer right on odd pages so it fits the decalbg-img
+\fancyhfoffset[LE]{0pt} % push the footer left on even pages so it fits the decal
+\fancyhfoffset[RO]{0pt} % push the footer right on odd pages so it fits the decalbg-img
 \renewcommand{\headrulewidth}{0.0pt} %no rule for header
 \renewcommand{\footrulewidth}{0.0pt} %no rule for footer
 
@@ -16,16 +35,16 @@
 \fancyfoot{} % clear all footer fields
 
 \fancyfoot[LE]{
-  \textcolor{uppergold}{\thepage}
+  \dsashadowtext{white}{black}{{\thepage}}
   \hspace*{0.9cm}
-  \raisebox{12pt}{\textsc{\textcolor{uppergold}{\nouppercase\leftmark}}}
-  }
+  \raisebox{12pt}{\textsc{\textcolor{footercolor}{\nouppercase\leftmark}}}
+}
 
 \fancyfoot[RO]{
-  \raisebox{12pt}{\textsc{\textcolor{uppergold}{\nouppercase\leftmark}}}
+  \raisebox{12pt}{\textsc{\textcolor{footercolor}{\nouppercase\leftmark}}}
   \hspace*{1cm}
-  \textcolor{uppergold}{\thepage}
-  }
+  \dsashadowtext{white}{black}{{\thepage}}
+}
 
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Don not write word "chapter"
 
