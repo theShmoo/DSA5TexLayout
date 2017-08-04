@@ -9,12 +9,33 @@
 \renewcommand\thesubsection{}
 \renewcommand\thesubsubsection{}
 
-% Adjust chapter formatting
-\titleclass{\chapter}{top}
-\titleformat{\chapter}
-{\color{titlered}\normalfont\scshape\Huge}{\thechapter}{0em}{}
-\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+\newtcolorbox{chapterbox}[2][]{
+    blankest,
+    valign=center,
+    height=3.5cm,
+    left=2cm,
+    right=2cm,
+    watermark graphics=#2,
+    watermark stretch=1,
+    width=\textwidth,
+    #1
+}
 
+\newcommand*{\justifyheading}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CHAPTER
+
+%\titleclass{\chapter}{top}
+\titleformat{\chapter}[display]
+{\color{titlered}\normalfont\scshape\Huge}
+{}
+{0em}
+{\begin{chapterbox}{img/pergament/bg-a4-kapitelstart.png}%
+  \justifyheading #1
+\end{chapterbox}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Adjust section and subsection colors and font (change 0em to 1em if you commented the removal of section numbering)
 \titleformat{\section}
 {\color{titlered}\normalfont\scshape\LARGE}{\thesection}{0em}{}

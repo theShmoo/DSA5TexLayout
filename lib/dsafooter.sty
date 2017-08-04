@@ -1,0 +1,32 @@
+%!TEX root = ../example.tex
+%!TEX spellcheck = de
+% dsafooter.sty
+% Copyright (C) 2017 by David Pfahler
+
+% Setup for custom footer
+\pagestyle{fancy}
+
+\footskip = 48pt %push the footer down so it fits with the decal from the bg-img
+\fancyhfoffset[LE]{10pt} % push the footer left on even pages so it fits the decal
+\fancyhfoffset[RO]{10pt} % push the footer right on odd pages so it fits the decalbg-img
+\renewcommand{\headrulewidth}{0.0pt} %no rule for header
+\renewcommand{\footrulewidth}{0.0pt} %no rule for footer
+
+\fancyhead{} % clear all header fields
+\fancyfoot{} % clear all footer fields
+
+\fancyfoot[LE]{
+  \textcolor{uppergold}{\thepage}
+  \hspace*{0.9cm}
+  \raisebox{12pt}{\textsc{\textcolor{uppergold}{\nouppercase\leftmark}}}
+  }
+
+\fancyfoot[RO]{
+  \raisebox{12pt}{\textsc{\textcolor{uppergold}{\nouppercase\leftmark}}}
+  \hspace*{1cm}
+  \textcolor{uppergold}{\thepage}
+  }
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Don not write word "chapter"
+
+\fancypagestyle{plain}{}
