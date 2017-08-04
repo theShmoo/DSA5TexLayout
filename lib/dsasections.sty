@@ -9,31 +9,36 @@
 \renewcommand\thesubsection{}
 \renewcommand\thesubsubsection{}
 
-\newtcolorbox{chapterbox}[2][]{
-    blankest,
-    valign=center,
-    height=3.5cm,
-    left=2cm,
-    right=2cm,
-    watermark graphics=#2,
-    watermark stretch=1,
-    width=\textwidth,
-    #1
-}
-
 \newcommand*{\justifyheading}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CHAPTER
 
-%\titleclass{\chapter}{top}
+\newtcolorbox{chapterbox}[2][]{
+    blankest,
+    valign=center,
+    % fixed size:
+    height=3.9cm,
+    % margins:
+    left=2.2cm,
+    right=2.2cm,
+    watermark graphics=#2,
+    watermark stretch=1,
+    width=\paperwidth,
+    enlarge left by=-1.5cm,    %% this one here pushed to left
+    #1
+}
+
 \titleformat{\chapter}[display]
-{\color{titlered}\normalfont\scshape\Huge}
+{\color{titlered}\Huge}
 {}
 {0em}
 {\begin{chapterbox}{img/pergament/bg-a4-kapitelstart.png}%
   \justifyheading #1
 \end{chapterbox}}
+
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Adjust section and subsection colors and font (change 0em to 1em if you commented the removal of section numbering)

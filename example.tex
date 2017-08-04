@@ -33,11 +33,18 @@
 
 \frontmatter
 
-\lipsum[1] % filler text
 \titlebackgroundimg
+\lipsum[1] % filler text
+\clearpage
 
 %Inhaltsverzeichnis
+\begingroup
+\let\clearpage\relax
+\tocbackgroundimg
+
 \tableofcontents
+\endgroup
+\clearpage
 
 \mainmatter
 

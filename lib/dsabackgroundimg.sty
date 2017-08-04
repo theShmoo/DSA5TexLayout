@@ -23,10 +23,21 @@
 
 \newcommand{\titlebackgroundimg}{%
 	\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{img/bg/bg-a4-title.png}};
-\clearpage
 }
 \newcommand{\lastpagebackgroundimg}{%
 	\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{img/bg/bg-a4-last-page.png}};
+}
+
+\newcommand{\normalbackgroundimg}{%
+  \ifodd\value{page} % the first page is always right! which means that we have to start with the even background image
+    \includegraphics[width=\paperwidth,height=\paperheight]{\evenbackgroundimg{\intcalcMod{\value{page}}{3}}}
+  \else
+    \includegraphics[width=\paperwidth,height=\paperheight]{\oddbackgroundimg{\intcalcMod{\value{page}}{3}}}
+  \fi
+}
+
+\newcommand{\tocbackgroundimg}{%
+  \tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\normalbackgroundimg};
 }
 
 \iftoggle{bool-a4}{%
@@ -55,12 +66,7 @@
   color=black,
   contents={%
     \if@mainmatter
-      %NORMALPAGE
-      \ifodd\value{page} % the first page is always right! which means that we have to start with the even background image
-        \includegraphics[width=\paperwidth]{\evenbackgroundimg{\intcalcMod{\value{page}}{3}}}
-      \else
-        \includegraphics[width=\paperwidth]{\oddbackgroundimg{\intcalcMod{\value{page}}{3}}}
-      \fi
+     \normalbackgroundimg
     \fi
   }
 }
