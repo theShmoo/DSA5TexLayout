@@ -3,33 +3,48 @@
 % dsapaperbox.sty
 % Copyright (C) 2017 by David Pfahler
 
-\newtcolorbox{paperbox}[2][]{
-	frame hidden,
-	boxrule=0pt,
+\newcommand\paperimage{%
+	\if\tcbtextheight>\tcbtextwidth*2
+		img/pergament/pergament-high.png
+	\else
+	\if\tcbtextwidth>\tcbtextheight*2
+		img/pergament/pergament-wide.png
+	\else
+		img/pergament/pergament-quad.png
+	\fi
+	\fi
+}
+
+\newtcolorbox{paperbox}[1][]{
+	blankest,
 	breakable,
-	enhanced,
 	before skip=11pt plus 1pt,
-	toptitle=3mm,
-	boxsep=0.25ex,
-	left=8pt,
-	right=8pt,
-	fonttitle=\fontfamily{fosj}\selectfont\scshape\bfseries\color{black},
-	fontupper=\fontfamily{lmss}\selectfont,
-	title=#2,
+	left=1cm,
+	right=1cm,
+	top=1cm,
+	bottom=1cm,
 	arc=0mm,
-	parbox = false,
-	borderline north={1pt}{-0.5pt}{black},
-	borderline south={1pt}{-0.5pt}{black},
-	colback=monstertandark,
-	colframe=monstertandark,
-	colbacktitle=monstertandark,
-	fuzzy shadow={0mm}{-3.5pt}{-0.5pt}{0.4mm}{black!60!white},
-	overlay={
-		\fill [fill=black] (frame.south west) -- ++(7pt,0) -- ++(0,-5pt) -- cycle;
-		\fill [fill=black] (frame.north west) -- ++(7pt,0) -- ++(0,5pt) -- cycle;
-		\fill [fill=black] (frame.north east) -- ++(-7pt,0) -- ++(0,5pt) -- cycle;
-		\fill [fill=black] (frame.south east) -- ++(-7pt,0) -- ++(0,-5pt) -- cycle;
-		},
+	parbox=false,
+	watermark graphics=\paperimage,
+  watermark stretch=1,
+	after={\vspace{10pt plus 1pt}\noindent},
+	#1
+}
+
+\newtcolorbox{twocolumpaperbox}[1][]{
+	blankest,
+	raster columns=2,
+	raster valign=top,
+	breakable,
+	before skip=11pt plus 1pt,
+	left=1cm,
+	right=1cm,
+	top=1cm,
+	bottom=1cm,
+	arc=0mm,
+	parbox=false,
+	watermark graphics=\paperimage,
+  watermark stretch=1,
 	after={\vspace{10pt plus 1pt}\noindent},
 	#1
 }
