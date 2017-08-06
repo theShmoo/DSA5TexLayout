@@ -37,21 +37,16 @@
   \justifyheading #1
 \end{chapterbox}}
 
-\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+\titlespacing*{\chapter}{0pt}{0pt}{10pt}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Adjust section and subsection colors and font (change 0em to 1em if you commented the removal of section numbering)
-\titleformat{\section}
-{\color{titlered}\normalfont\scshape\LARGE}{\thesection}{0em}{}
+\titleformat{\section}[display]
+{\color{titlered}\normalfont\scshape\LARGE}{}{0em}{#1}
 
-\titleformat{\subsection}
-{\color{titlered}\normalfont\scshape\Large}{\thesubsection}{0em}{}[{\titleline{\color{undergold}\titlerule[1pt]}}]
+\titleformat{\subsection}[display]
+{\color{titlered}\normalfont\scshape\Large}{}{0em}{#1}[{\titleline{\color{undergold}\titlerule[1pt]}}]
 
-\titleformat{\subsubsection}
-{\color{titlered}\normalfont\scshape\large}{\thesubsubsection}{0em}{}[]
-
-\newcommand{\subtitlesection}[2]{
-	\subsubsection{#1}\vspace{-5pt}
-	\textit{#2}\vspace{5pt}\par
-	}
+\titleformat{\subsubsection}[display]
+{\color{titlered}\normalfont\scshape\large}{}{0em}{#1}[]

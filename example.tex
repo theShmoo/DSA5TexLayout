@@ -51,19 +51,19 @@
 % Comment this out if you're using the article class.
 \chapter{Chapter 1: The Dark \LaTeX}
 
+\lipsum[1]
+
 \section{Main Section}
 \lipsum[1] % filler text
 
 \subsection{Fun with boxes}
 \subsubsection{Even more fun!}
 
-
-\begin{commentbox}{Neat Green Box!}
+\begin{commentbox}{\commentquad}
 	\lipsum[1]
 \end{commentbox}
 
-\subtitlesection{Weapon, +1, +2, or +3}
-{Weapon (any), uncommon (+1), rare (+2), or very rare (+3)}
+\subsection{Quotebox}
 
 \begin{quotebox}
 	As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
@@ -71,24 +71,23 @@
 
 \newpage % Acts as columbreak because of twocolumn option; for pagebreak use \clearpage
 
-% For more columns, you can say \begin{dsatable}[your options here}.
-% For instance, if you wanted three columns, you could say
-% \begin{dsatable}{XXX}. The usual host of tabular parameters are
-% aailable as well.
-\header{Nice table}
-\begin{dsatable}
-   	\textbf{Table head}  & \textbf{Table head} \\
-   	Some value  & Some value \\
-   	Some value  & Some value \\
-   	Some value  & Some value
+\begin{dsatable}[tabularx={XXX}, title=Nice table]
+		\dsatableheader{tableheadercolor}
+		\textbf{Table head} & \textbf{Table head} & \textbf{Table head}\\
+   	\hline
+   	Some value  & Some value & Some value \\
+   	\hline
+   	Some value  & Some value & Some value
 \end{dsatable}
 
-\begin{paperbox}
+\lipsum[1]
+
+\begin{paperbox}{\paperimagequad}
 	\lipsum[1]
 \end{paperbox}
 
 \onecolumn
-\begin{twocolumpaperbox}
+\begin{twocolumpaperbox}{\paperimagequad}
 	\begin{itemize}
 		\item \lipsum[1]
 		\item \lipsum[1]
@@ -101,25 +100,25 @@
 % begin{monsterboxnobg}
 \begin{monsterbox}{Monster Foo}
 	\textit{Small metasyntactic variable (goblinoid), neutral evil}\\
-	\hline
+	%\hline
 	\basics[%
 	armorclass = 12,
 	hitpoints  = 16 (3d8 + 3),
 	speed      = 50 ft
 	]
-	\hline
+	%\hline
 	\stats[
     STR = \stat{12}, % This stat command will autocomplete the modifier for you
     DEX = \stat{7}
 	]
-	\hline
+	%\hline
 	\details[%
 	% If you want to use commas in these sections, enclose the
 	% description in braces.
 	% I'm so sorry.
 	languages = {Common Lisp, Erlang},
 	]
-	\hline \\[1mm]
+	%\hline \\[1mm]
 	\begin{monsteraction}[Monster-super-powers]
 		This Monster has some serious superpowers!
 	\end{monsteraction}
@@ -160,11 +159,9 @@
 
 \backmatter
 
-\chapter{BACKMATTER}
+\lastpagebackgroundimg
 
 \lipsum[1] % text
-
-\lastpagebackgroundimg
 
 % End document
 \end{document}

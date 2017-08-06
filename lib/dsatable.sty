@@ -3,22 +3,34 @@
 % dsatable.sty
 % Copyright (C) 2017 by David Pfahler
 
+% used packages
+\usetikzlibrary{shapes.arrows, fadings}
+
+\tikzfading[name=fade right, left color=transparent!0, right color=transparent!100]
+
 % Table Header
-\newcommand{\header}[1]{{
+\newcommand{\dsatablecaption}[1]{{
 	\par\vspace*{8pt}
 	\noindent
 	\sffamily\bfseries\scshape
 	#1}}
 
+% Fancy DSA 5 header
+\newcommand{\dsatableheader}[1]{%
+\begin{tikzpicture}[remember picture,overlay]
+	\fill[#1, path fading=fade right] (-0.55em,-0.4em) rectangle (1.05\textwidth,1.2em);
+\end{tikzpicture}%
+}
+
 % Centered Column
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedleft\arraybackslash}X}
 
-% Table Environment
-\newenvironment{dsatable}[1][XX]{
-	\par\vspace*{8pt}
-	\noindent
-	\fontfamily{lmss}\selectfont %Select font
-	\rowcolors{1}{bgtan}{commentgreen} % Alternate colors
-	\tabularx{\linewidth}{#1}
-	}
-	{\endtabularx\vspace{8pt plus 1pt}\noindent}
+\newtcolorbox{dsatable}[1][]{
+	blankest,
+	arc=0mm,
+	colframe=tablelinecolor,
+	coltitle=black,
+	center title,
+	#1
+}

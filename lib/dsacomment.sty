@@ -3,35 +3,42 @@
 % dsacomment.sty
 % Copyright (C) 2017 by David Pfahler
 
-% Green comment box definition
+\newcommand\commentquad{img/black/meisterkasten.png}
+\newcommand\commentwide{img/black/meisterkasten-wide.png}
+\newcommand\commenthigh{img/black/meisterkasten-high.png}
+
 \newtcolorbox{commentbox}[2][]{
-	frame hidden,
-	boxrule=0pt,
+	blankest,
 	breakable,
-	enhanced,
 	before skip=8pt plus 1pt,
-	toptitle=3mm,
-	boxsep=0.25ex,
-	left=8pt,
-	right=8pt,
+	left=5mm,
+	right=5mm,
+	top=5mm,
+	bottom=5mm,
 	arc=0mm,
-	fonttitle=\fontfamily{fosj}\selectfont\scshape\bfseries\color{black},
-	fontupper=\fontfamily{lmss}\selectfont,
-	title=#2,
-	parbox = false,
-	colback=commentgreen,
-	colframe=commentgreen,
-	colbacktitle=commentgreen,
-	after={\vspace{5pt plus 1pt}\noindent},
+	parbox=false,
+	watermark graphics=#2,
+  watermark stretch=1,
+	after={\vspace{8pt plus 1pt}\noindent},
+	coltext=commentboxcolor,
 	#1
 }
 
-%
-% Old implementation using mdframed
-%
-%\newenvironment{commentbox}[1]
-%{\fontfamily{lmss}\selectfont\begin{mdframed}[frametitle={#1},
-%                                          frametitlefont=\fontfamily{fosj}\selectfont\scshape\bfseries\color{black},
-%                                              linecolor=commentgreen,
-%                                              backgroundcolor=commentgreen]}
-%{\end{mdframed}}
+\newtcolorbox{twocolumcommentbox}[2][]{
+	blankest,
+	raster columns=2,
+	raster valign=top,
+	breakable,
+	before skip=8pt plus 1pt,
+	left=1cm,
+	right=1cm,
+	top=1cm,
+	bottom=1cm,
+	arc=0mm,
+	parbox=false,
+	watermark graphics=#2,
+  watermark stretch=1,
+	after={\vspace{8pt plus 1pt}\noindent},
+	coltext=commentboxcolor,
+	#1
+}
