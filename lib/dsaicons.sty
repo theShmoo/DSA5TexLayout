@@ -1,0 +1,21 @@
+%!TEX root = ../example.tex
+%!TEX spellcheck = de
+% dsaicons.sty
+% Copyright (C) 2017 by David Pfahler
+
+% icons for easy and hard
+\newcommand*{\dsaeasy}{\includegraphics[width=2em]{img/icons/einfach.png}}
+\newcommand*{\dsahard}{\includegraphics[width=2em]{img/icons/schwierig.png}}
+
+% icons for the npcs
+\newcommand*{\dsabauer}{\includegraphics[width=2em]{img/icons/BauerIcon.png}}
+\newcommand*{\dsakoenig}{\includegraphics[width=2em]{img/icons/KoenigIcon.png}}
+\newcommand*{\dsaspringer}{\includegraphics[width=2em]{img/icons/SpringerIcon.png}}
+\newcommand*{\dsaturm}{\includegraphics[width=2em]{img/icons/TurmIcon.png}}
+
+% command for defining easy and hard passages
+\newcommand{\dsaEasyHard}[2]{%
+    \dsaeasy #1
+    \par
+    \dsahard #2
+}

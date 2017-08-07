@@ -1,0 +1,39 @@
+%!TEX root = ../example.tex
+%!TEX spellcheck = de
+% dsaliturgy.sty
+% Copyright (C) 2017 by David Pfahler
+
+%
+% Macros for use within the monster environment
+%
+\newkeycommand\liturgy[
+    title=-,
+    probe=,
+    wirkung=,
+    liturgiedauer=,
+    kosten=,
+    reichweite=,
+    wirkungsdauer=,
+    ziel=,
+    verbreitung=,
+    steigerung=]{%
+  \dsaheader{\sffamily\bfseries\scshape \commandkey{title}\}\\
+  \ifcommandkey{probe}
+      {\textbf{Probe:} \commandkey{probe}\\}{}
+  \ifcommandkey{wirkung}
+      {\textbf{wirkung:} \commandkey{wirkung}\\}{}
+  \ifcommandkey{liturgiedauer}
+      {\textbf{Liturgiedauer:} \commandkey{liturgiedauer}\\}{}
+  \ifcommandkey{kosten}
+      {\textbf{KaP-Kosten:} \commandkey{kosten}\\}{}
+  \ifcommandkey{reichweite}
+      {\textbf{Reichweite:} \commandkey{reichweite}\\}{}
+  \ifcommandkey{wirkungsdauer}
+      {\textbf{Wirkungsauer:} \commandkey{wirkungsdauer}\\}{}
+  \ifcommandkey{ziel}
+      {\textbf{Zielkategorie:} \commandkey{ziel}\\}{}
+  \ifcommandkey{verbreitung}
+      {\textbf{Verbreitung:} \commandkey{verbreitung}\\}{}
+  \ifcommandkey{steigerung}
+      {\textbf{Steigerungsfaktor:} \commandkey{steigerung}\\}{}
+}
