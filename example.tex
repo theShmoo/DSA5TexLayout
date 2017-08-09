@@ -5,7 +5,6 @@
 \documentclass[10pt,% font size
   a4paper,% paper size
   twoside,% different margin for even and odd page
-  twocolumn,% two columns per page
   openany% chapters start on the same page
   ]{book}
 
@@ -47,6 +46,9 @@
 \clearpage
 
 \mainmatter
+
+\begin{multicols}{2}
+
 
 % Comment this out if you're using the article class.
 \chapter{Chapter 1: The Dark \LaTeX}
@@ -98,15 +100,16 @@
   \lipsum[1]
 \end{paperbox}
 
-\onecolumn
-\begin{twocolumpaperbox}{\paperimagequad}
+\end{multicols}
+\begin{paperbox}{\paperimagequad}
+\begin{multicols}{2}
   \begin{itemize}
     \item \lipsum[1]
     \item \lipsum[1]
     \item \lipsum[1]
   \end{itemize}
-\end{twocolumpaperbox}
-\twocolumn
+\end{paperbox}
+\begin{multicols}{2}
 
 % You can optionally not include the background by saying
 % begin{monsterboxnobg}
@@ -146,7 +149,7 @@
 
 \section{Icons}
 
-\dsaEasyHard{\lipsum[1]}{\lipsum[1]}
+%\dsaEasyHard{\lipsum[1]}{\lipsum[1]}
 
 \dsabauer
 
@@ -158,8 +161,8 @@
 
 \section{Liturgien}
 
+\begin{liturgybox}{Bann des Lichts}
 \liturgy[%
-  title={Bann des Lichts},
   probe={MU/KL/CH},
   wirkung={Um den Geweihten herum bildet sich eine Kugel aus Dunkelheit mit einem Durchmesser von QS x 3 Schritt. Pro QS erschweren sich die Sichtverhältnisse um eine Stufe. Natürliche und magische Lichtquellen können die Dunkelheit nicht erhellen. Bei karmalen Lichtquellen entscheidet die höhere QS (wie bei einer Vergleichsprobe), ob das Licht zu sehen ist oder nicht: Hierbei gilt alles oder nichts: Das Licht wird nicht um die QS der Liturgie gedämpft, sondern die höhere QS entscheidet darüber ob Licht zu sehen ist oder nicht. Für den Geweihten werden die Sichtverhältnisse durch die Liturgie nicht erschwert. Der Geweihte muss vor dem Wirken der Liturgie entscheiden, ob die Zone der Dunkelheit an Ort und Stelle verbleiben oder sich mit ihm als Zentrum bewegen soll.},
   liturgiedauer={4 Aktionen},
@@ -168,8 +171,8 @@
   wirkungsdauer={aufrechterhaltend},
   ziel={Zone},
   verbreitung={Boron (Tod und Traum), Phex (Schatten)},
-  steigerung={B}
-]
+  steigerung={B}]
+\end{liturgybox}
 
 \chapter{Chapter 2: The Dark Eye}
 
@@ -194,6 +197,8 @@
 \pagebreak
 
 \lipsum[1] % text
+
+\end{multicols}
 
 \backmatter
 

@@ -3,11 +3,22 @@
 % dsaliturgy.sty
 % Copyright (C) 2017 by David Pfahler
 
+% new Monsterbox
+\newtcolorbox{liturgybox}[2][]{
+  blankest,
+  arc=0mm,
+  colframe=tablelinecolor,
+  coltitle=black,
+  title style={left color=tablelinecolor,right color=transparent!100}
+  title=#2,
+  center title,
+  #1
+}
+
 %
-% Macros for use within the monster environment
+% Macros for use within the liturgy environment
 %
-\newkeycommand\liturgy[
-    title=-,
+\newkeycommand\liturgy[%
     probe=,
     wirkung=,
     liturgiedauer=,
@@ -17,23 +28,24 @@
     ziel=,
     verbreitung=,
     steigerung=]{%
-  \dsaheader{\sffamily\bfseries\scshape \commandkey{title}\}\\
+\begin{description}
   \ifcommandkey{probe}
-      {\textbf{Probe:} \commandkey{probe}\\}{}
+      {\item[Probe:] \commandkey{probe}\\}{}
   \ifcommandkey{wirkung}
-      {\textbf{wirkung:} \commandkey{wirkung}\\}{}
+      {\item[Wirkung:] \commandkey{wirkung}\\}{}
   \ifcommandkey{liturgiedauer}
-      {\textbf{Liturgiedauer:} \commandkey{liturgiedauer}\\}{}
+      {\item[Liturgiedauer:] \commandkey{liturgiedauer}\\}{}
   \ifcommandkey{kosten}
-      {\textbf{KaP-Kosten:} \commandkey{kosten}\\}{}
+      {\item[KaP-Kosten:] \commandkey{kosten}\\}{}
   \ifcommandkey{reichweite}
-      {\textbf{Reichweite:} \commandkey{reichweite}\\}{}
+      {\item[Reichweite:] \commandkey{reichweite}\\}{}
   \ifcommandkey{wirkungsdauer}
-      {\textbf{Wirkungsauer:} \commandkey{wirkungsdauer}\\}{}
+      {\item[Wirkungsauer:] \commandkey{wirkungsdauer}\\}{}
   \ifcommandkey{ziel}
-      {\textbf{Zielkategorie:} \commandkey{ziel}\\}{}
+      {\item[Zielkategorie:] \commandkey{ziel}\\}{}
   \ifcommandkey{verbreitung}
-      {\textbf{Verbreitung:} \commandkey{verbreitung}\\}{}
+      {\item[Verbreitung:] \commandkey{verbreitung}\\}{}
   \ifcommandkey{steigerung}
-      {\textbf{Steigerungsfaktor:} \commandkey{steigerung}\\}{}
+      {\item[Steigerungsfaktor:] \commandkey{steigerung}\\}{}
+\end{description}
 }

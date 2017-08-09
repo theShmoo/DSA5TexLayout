@@ -10,33 +10,10 @@
 \newtcolorbox{paperbox}[2][]{
 	blankest,
 	breakable,
-	before skip=8pt plus 1pt,
-	left=1cm,
-	right=1cm,
-	top=1cm,
-	bottom=1cm,
+	boxsep=5mm,
 	arc=0mm,
 	parbox=false,
 	watermark graphics=#2,
   watermark stretch=1,
-	after={\vspace{8pt plus 1pt}\noindent},
-	#1
-}
-
-\newtcolorbox{twocolumpaperbox}[2][]{
-	blankest,
-	raster columns=2,
-	raster valign=top,
-	breakable,
-	before skip=11pt plus 1pt,
-	left=1cm,
-	right=1cm,
-	top=1cm,
-	bottom=1cm,
-	arc=0mm,
-	parbox=false,
-	watermark graphics=#2,
-  watermark stretch=1,
-	after={\vspace{10pt plus 1pt}\noindent},
 	#1
 }
