@@ -32,20 +32,20 @@
 
 \frontmatter
 
-\titlebackgroundimg
+\titlebackgroundimg{}
 \lipsum[1] % filler text
 \clearpage
 
 %Inhaltsverzeichnis
 \begingroup
 \let\clearpage\relax
-\tocbackgroundimg
+\tocbackgroundimg{}
 
 \tableofcontents
 \endgroup
 \clearpage
 
-\mainmatter
+\mainmatter{}
 
 \begin{multicols}{2}
 
@@ -103,11 +103,12 @@
 \end{multicols}
 \begin{paperbox}{\paperimagequad}
 \begin{multicols}{2}
-  \begin{itemize}
+  \begin{dsalist}
     \item \lipsum[1]
     \item \lipsum[1]
     \item \lipsum[1]
-  \end{itemize}
+  \end{dsalist}
+\end{multicols}
 \end{paperbox}
 \begin{multicols}{2}
 
@@ -151,13 +152,13 @@
 
 %\dsaEasyHard{\lipsum[1]}{\lipsum[1]}
 
-\dsabauer
+\dsabauer{}
 
-\dsaspringer
+\dsaspringer{}
 
-\dsakoenig
+\dsakoenig{}
 
-\dsaturm
+\dsaturm{}
 
 \section{Liturgien}
 
@@ -200,9 +201,9 @@
 
 \end{multicols}
 
-\backmatter
+\backmatter{}
 
-\lastpagebackgroundimg
+\lastpagebackgroundimg{}
 
 \lipsum[1] % text
 
