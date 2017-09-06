@@ -20,13 +20,16 @@
 \ExecuteOptions{letter,full}
 \ProcessOptions\relax
 
-
+\newcommand{\puttocenter}[1]{%
+  \tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){#1};
+}
 \newcommand{\titlebackgroundimg}{%
-	\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{img/bg/bg-a4-title.png}};
+	\puttocenter{\includegraphics[width=\paperwidth,height=\paperheight]{img/bg/bg-a4-title.png}};
 }
 \newcommand{\lastpagebackgroundimg}{%
-	\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{img/bg/bg-a4-last-page.png}};
+	\puttocenter{\includegraphics[width=\paperwidth,height=\paperheight]{img/bg/bg-a4-last-page.png}};
 }
+
 
 \newcommand{\normalbackgroundimg}{%
   \ifodd\value{page} % the first page is always right! which means that we have to start with the even background image
@@ -37,7 +40,7 @@
 }
 
 \newcommand{\tocbackgroundimg}{%
-  \tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\normalbackgroundimg};
+  \puttocenter{\normalbackgroundimg};
 }
 
 \iftoggle{bool-a4}{%

@@ -12,6 +12,8 @@
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 
+% Set text font
+\usepackage{gentium}
 
 \title{The Dark \LaTeX}
 \author{David}
@@ -25,15 +27,12 @@
 % Select the language
 \selectlanguage{ngerman}
 
-% Set text font
-\fontfamily{ppl}\selectfont
-
 % Your content goes here
 
 \frontmatter
 
 \titlebackgroundimg{}
-\lipsum[1] % filler text
+\puttocenter{\includegraphics[width=0.5\paperwidth]{img/DSA5_Scriptorium_Aventuris_Logo1.png}}
 \clearpage
 
 %Inhaltsverzeichnis
@@ -99,6 +98,18 @@
   \lipsum[1]
 \end{paperbox}
 
+\section{Aufzählungszeichen}
+
+\begin{paperbox}{\paperimagequad}
+    \begin{dsalist}
+      \item Ad primam
+      \item Ad secundam
+      \item Ad tertiam
+      \item Ad quartam ultimamque.
+      \item \lipsum[1]
+    \end{dsalist}
+\end{paperbox}
+
 \end{multicols}
 \begin{paperbox}{\paperimagequad}
   \begin{multicols}{2}
@@ -149,15 +160,15 @@
 
 \section{Icons}
 
-%\dsaEasyHard{\lipsum[1]}{\lipsum[1]}
+\begin{dsalist}
+      \item \dsabauer{} Bauer
+      \item \dsaspringer{} Springer
+      \item \dsakoenig{} König
+      \item \dsaturm{} Turm
+      \item \dsaturm{} Turm
+\end{dsalist}
 
-\dsabauer{}
-
-\dsaspringer{}
-
-\dsakoenig{}
-
-\dsaturm{}
+\dsaEasyHard{Einfacher}{Schwerer}
 
 \section{Liturgien}
 
