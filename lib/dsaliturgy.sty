@@ -5,14 +5,21 @@
 
 % new Monsterbox
 \newtcolorbox{liturgybox}[2][]{
-  blankest,
-  arc=0mm,
-  colframe=tablelinecolor,
-  coltitle=black,
-  title style={left color=tablelinecolor,right color=transparent!100}
-  title=#2,
-  center title,
-  #1
+   enhanced,
+   before skip=7pt plus2pt,
+   boxrule=0pt,
+   titlerule=1pt,
+   boxsep=0.25ex,
+   left=2.5mm,
+   right=2.15mm,
+   arc=0mm,
+   opacityback=0,
+   opacityframe=0,
+   fonttitle=\bfseries\color{black}\Large,
+   title=#2,
+   title style={path fading=fade right, left color=tablelinecolor, right color=tablelinecolor},
+   after={\vspace{7pt plus 1pt}\noindent},
+   #1
 }
 
 %
@@ -28,24 +35,24 @@
     ziel=,
     verbreitung=,
     steigerung=]{%
-\begin{description}
-  \ifcommandkey{probe}
-      {\item[Probe:] \commandkey{probe}\\}{}
-  \ifcommandkey{wirkung}
-      {\item[Wirkung:] \commandkey{wirkung}\\}{}
-  \ifcommandkey{liturgiedauer}
-      {\item[Liturgiedauer:] \commandkey{liturgiedauer}\\}{}
-  \ifcommandkey{kosten}
-      {\item[KaP-Kosten:] \commandkey{kosten}\\}{}
-  \ifcommandkey{reichweite}
-      {\item[Reichweite:] \commandkey{reichweite}\\}{}
-  \ifcommandkey{wirkungsdauer}
-      {\item[Wirkungsauer:] \commandkey{wirkungsdauer}\\}{}
-  \ifcommandkey{ziel}
-      {\item[Zielkategorie:] \commandkey{ziel}\\}{}
-  \ifcommandkey{verbreitung}
-      {\item[Verbreitung:] \commandkey{verbreitung}\\}{}
-  \ifcommandkey{steigerung}
-      {\item[Steigerungsfaktor:] \commandkey{steigerung}\\}{}
-\end{description}
+\begin{dsadescritpion}
+  \ifcommandkey{probe}%
+      {\item[Probe:] \commandkey{probe}}{}%
+  \ifcommandkey{wirkung}%
+      {\item[Wirkung:] \commandkey{wirkung}}{}%
+  \ifcommandkey{liturgiedauer}%
+      {\item[Liturgiedauer:] \commandkey{liturgiedauer}}{}%
+  \ifcommandkey{kosten}%
+      {\item[KaP-Kosten:] \commandkey{kosten}}{}%
+  \ifcommandkey{reichweite}%
+      {\item[Reichweite:] \commandkey{reichweite}}{}%
+  \ifcommandkey{wirkungsdauer}%
+      {\item[Wirkungsauer:] \commandkey{wirkungsdauer}}{}%
+  \ifcommandkey{ziel}%
+      {\item[Zielkategorie:] \commandkey{ziel}}{}%
+  \ifcommandkey{verbreitung}%
+      {\item[Verbreitung:] \commandkey{verbreitung}}{}%
+  \ifcommandkey{steigerung}%
+      {\item[Steigerungsfaktor:] \commandkey{steigerung}}{}%
+\end{dsadescritpion}
 }
