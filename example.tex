@@ -42,15 +42,16 @@
 \tocbackgroundimg{}
 
 \tableofcontents
+
 \endgroup
+
 \clearpage
 
 \mainmatter{}
 
-% Comment this out if you're using the article class.
-\chapter{Chapter 1: The Dark \LaTeX}
-
 \begin{multicols}{2}
+
+\chapter{Chapter 1: The Dark \LaTeX}
 \lipsum[1]
 
 \section{Main Section}
@@ -185,19 +186,33 @@
   steigerung={B}]
 \end{liturgybox}
 
-
-\end{multicols}
 \chapter{Chapter 2: The Dark Eye}
-\begin{multicols}{2}
 
 \section{Chars}
 
-\mainstats[MU=12, KL=12, IN=12, CH=12, FF=12, GE=12, KO=12, KK=12]
-\calcstats[%
-LeP=30,AsP=30,KaP=30,
-GS=6,INI=12+1W6,
-SK=3,ZK=2,AW=7,
-Schips=3,RS=3,BE=1]
+\lipsum[1] % text
+
+\puttotopleft{
+\begin{dsachar}
+
+  \lipsum[1] % text
+
+  \tcblower{}
+
+  \mainstats[%
+    MU={12}, KL={12}, IN={12}, CH={12}, FF={12}, GE={12}, KO={12}, KK={12}]
+
+  \calcstats[%
+    LEP={30}, ASP={30}, KAP={30},
+    GS={6}, INI={12+1W6},
+    SK={3}, ZK={2}, AW={7},
+    SCHIPS={3}, RS={3}, BE={1}]
+\end{dsachar}
+}
+
+\lipsum[1] % text
+
+
 
 \pagebreak
 

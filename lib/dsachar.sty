@@ -3,60 +3,75 @@
 % dsachar.sty
 % Copyright (C) 2017 by David Pfahler
 
-\usepackage{colortbl} % needed for coloring the table lines
+\usepackage[table]{xcolor}
 
 \newcommand{\puttotopleft}[1]{%
-  \node [anchor=north east, inner sep=0pt]  at (current page.north east)
-     {#1};
+  \tikz[remember picture, overlay] \node [inner sep=0pt, anchor=north east]  at (current page.north east) {#1};
 }
+
+\newtcolorbox{dsachar}[1][]{
+  blankest,
+  breakable,
+  sidebyside,
+  righthand width=3cm,
+  left=5mm,
+  right=5mm,
+  top=5mm,
+  bottom=5mm,
+  arc=0mm,
+  watermark graphics={\commenthigh},
+  watermark stretch=1,
+  coltext=commentboxcolor,
+  #1
+}
+
 
 %
 % Macros for use within the dsachar environment
 %
 \newkeycommand\mainstats[%
     MU=,KL=,IN=,CH=,FF=,GE=,KO=,KK=]{%
-\begin{tabular}[c!{\color{white}\vrule}c]
-\arrayrulecolor{white}
-MU&\commandkey{MU}\\
-\arrayrulecolor{white}\hline
-KL&\commandkey{KL}\\
-\arrayrulecolor{white}\hline
-IN&\commandkey{IN}\\
-\arrayrulecolor{white}\hline
-CH&\commandkey{CH}\\
-\arrayrulecolor{white}\hline
-FF&\commandkey{FF}\\
-\arrayrulecolor{white}\hline
-GE&\commandkey{GE}\\
-\arrayrulecolor{white}\hline
-KO&\commandkey{KO}\\
-\arrayrulecolor{white}\hline
-KK&\commandkey{KK}\\
-\end{tabular}
+\begin{dsatable}[tabularx={Y|Y},colframe=commentboxcolor, coltext=commentboxcolor]
+   MU&\commandkey{MU}\\
+  \hline
+  KL&\commandkey{KL}\\
+  \hline
+  IN&\commandkey{IN}\\
+  \hline
+  CH&\commandkey{CH}\\
+  \hline
+  FF&\commandkey{FF}\\
+  \hline
+  GE&\commandkey{GE}\\
+  \hline
+  KO&\commandkey{KO}\\
+  \hline
+  KK&\commandkey{KK}\\
+\end{dsatable}
 }
 
 \newkeycommand\calcstats[%
-    LeP=,AsP=,KaP=,GS=,INI=,SK=,ZK=,AW=,Schips=,RS=,BE=]{%
-\begin{tabular}[c!{\color{white}\vrule}c]
+    LEP=,ASP=,KAP=,GS=,INI=,SK=,ZK=,AW=,SCHIPS=,RS=,BE=]{%
+\begin{dsatable}[tabularx={Y|Y},colframe=commentboxcolor, coltext=commentboxcolor]
 \ifcommandkey{LeP}%
-      {LeP & \commandkey{LeP}\\ \arrayrulecolor{white}\hline}{}%
+      {LeP & \commandkey{LEP}\\ \hline}{}%
 \ifcommandkey{AsP}%
-      {AsP & \commandkey{AsP}\\ \arrayrulecolor{white}\hline}{}%
+      {AsP & \commandkey{ASP}\\ \hline}{}%
 \ifcommandkey{KaP}%
-      {KaP & \commandkey{KaP}\\ \arrayrulecolor{white}\hline}{}%
+      {KaP & \commandkey{KAP}\\ \hline}{}%
 \ifcommandkey{GS}%
-      {GS & \commandkey{GS}\\ \arrayrulecolor{white}\hline}{}%
+      {GS & \commandkey{GS}\\ \hline}{}%
 \ifcommandkey{INI}%
-      {INI & \commandkey{INI}\\ \arrayrulecolor{white}\hline}{}%
+      {INI & \commandkey{INI}\\ \hline}{}%
 \ifcommandkey{SK}%
-      {SK & \commandkey{SK}\\ \arrayrulecolor{white}\hline}{}%
+      {SK & \commandkey{SK}\\ \hline}{}%
 \ifcommandkey{ZK}%
-      {ZK & \commandkey{ZK}\\ \arrayrulecolor{white}\hline}{}%
+      {ZK & \commandkey{ZK}\\ \hline}{}%
 \ifcommandkey{AW}%
-      {AW & \commandkey{AW}\\ \arrayrulecolor{white}\hline}{}%
+      {AW & \commandkey{AW}\\ \hline}{}%
 \ifcommandkey{Schips}%
-      {Schips & \commandkey{Schips}\\ \arrayrulecolor{white}\hline}{}%
+      {Schips & \commandkey{SCHIPS}\\ \hline}{}%
 \ifcommandkey{RS}%
-      {RS \ifcommandkey{BE}{/ BE}& \commandkey{RS} \ifcommandkey{BE}{/ \commandkey{BE}}\\ \arrayrulecolor{white}\hline}{}%
-\end{tabular}
+      {RS \ifcommandkey{BE}{/ BE}& \commandkey{RS} \ifcommandkey{BE}{/ \commandkey{BE}}\\}{}%
+\end{dsatable}
 }

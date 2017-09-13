@@ -14,18 +14,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CHAPTER
 
-\newtcolorbox{chapterbox}[2][]{
+\newtcolorbox{chapterbox}[1][]{
     blankest,
     valign=center,
     % fixed size:
     height=3.9cm,
+    width=\paperwidth,
+    enlarge left by=-1.5cm,    %% this one here pushed to left
     % margins:
     left=2.2cm,
     right=2.2cm,
-    watermark graphics=#2,
+    % watermark
+    watermark graphics={img/pergament/bg-a4-kapitelstart.png},
     watermark stretch=1,
-    width=\paperwidth,
-    enlarge left by=-1.5cm,    %% this one here pushed to left
     #1
 }
 
@@ -33,7 +34,7 @@
 {\color{titlered}\Huge}
 {}
 {0em}
-{\begin{chapterbox}{img/pergament/bg-a4-kapitelstart.png}%
+{\begin{chapterbox}%
   \justifyheading #1
 \end{chapterbox}}
 
